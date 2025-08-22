@@ -1,4 +1,4 @@
-# 🖼️ Picture to HTML with Gemini API (n8n + Custom UI)
+# 🖼️ Form to HTML with Gemini API (n8n + Custom UI)
 
 This project is an **automation flow** built on **n8n**, combined with a **custom frontend UI**.  
 The UI allows users to **upload an image**, which is then sent via **Webhook** to the n8n workflow.  
