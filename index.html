@@ -559,7 +559,7 @@
 
                     <div id="outputContent" style="display: none;">
                         <div class="d-flex gap-2 mb-3">
-                            <button class="btn btn-outline-glass btn-sm" onclick="copyToClipboard()">
+                            <button class="btn btn-outline-glass btn-sm" onclick="copyToClipboard(event)">
                                 <i class="fas fa-copy me-1"></i> Kopyala
                             </button>
                             <button class="btn btn-outline-glass btn-sm" onclick="togglePreview()">
@@ -752,21 +752,22 @@
         }
 
         // Copy to clipboard
-        function copyToClipboard() {
-            const htmlCode = document.getElementById('htmlCode').textContent;
-            navigator.clipboard.writeText(htmlCode).then(function() {
-                const btn = event.target.closest('button');
-                const originalHTML = btn.innerHTML;
-                btn.innerHTML = '<i class="fas fa-check success-check me-1"></i> Kopyalandı!';
-                
-                setTimeout(() => {
-                    btn.innerHTML = originalHTML;
-                }, 2000);
-            }).catch(function(err) {
-                console.error('Kopyalama hatası:', err);
-                alert('Kopyalama başarısız. Lütfen manuel olarak seçip kopyalayın.');
-            });
-        }
+                    function copyToClipboard(event) {
+                const htmlCode = document.getElementById('htmlCode').textContent;
+                navigator.clipboard.writeText(htmlCode).then(function() {
+                    const btn = event.target.closest('button');
+                    const originalHTML = btn.innerHTML;
+                    btn.innerHTML = '<i class="fas fa-check success-check me-1"></i> Kopyalandı!';
+                    
+                    setTimeout(() => {
+                        btn.innerHTML = originalHTML;
+                    }, 2000);
+                }).catch(function(err) {
+                    console.error('Kopyalama hatası:', err);
+                    alert('Kopyalama başarısız. Lütfen manuel olarak seçip kopyalayın.');
+                });
+            }
+
 
         // Toggle preview
         function togglePreview() {
